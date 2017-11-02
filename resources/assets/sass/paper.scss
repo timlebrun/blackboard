@@ -1,0 +1,32 @@
+$ripped-height: 20px;
+$paper-color: #fff;
+
+.paper {
+  position: relative;
+  background-color: $paper-color;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -$ripped-height;
+    height: $ripped-height;
+    background:
+      linear-gradient(45deg,
+        transparent 33.333%,
+        $paper-color 33.333%,
+        $paper-color 66.667%,
+        transparent 66.667%
+      ),
+      linear-gradient(-45deg,
+        transparent 33.333%,
+        $paper-color 33.333%,
+        $paper-color 66.667%,
+        transparent 66.667%
+      );
+    background-size: $ripped-height ($ripped-height * 2);
+    background-position: 0 (-$ripped-height);
+  }
+}

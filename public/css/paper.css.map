@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,MAAO;EACL,QAAQ,EAAE,QAAQ;EAClB,gBAAgB,EAJJ,IAAI;EAMhB,YAAQ;IACN,OAAO,EAAE,EAAE;IACX,OAAO,EAAE,KAAK;IACd,QAAQ,EAAE,QAAQ;IAClB,IAAI,EAAE,CAAC;IACP,KAAK,EAAE,CAAC;IACR,MAAM,EAAE,KAAe;IACvB,MAAM,EAdM,IAAI;IAehB,UAAU,EACR,2LAWC;IACH,eAAe,EAAE,SAAmC;IACpD,mBAAmB,EAAE,OAAmB",
+"sources": ["../../resources/assets/sass/paper.scss"],
+"names": [],
+"file": "paper.css"
+}
