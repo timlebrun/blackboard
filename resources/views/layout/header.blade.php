@@ -7,7 +7,7 @@
     @if(Auth::check())
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle user-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{ Auth::user()->thumbnail }}" alt="" class="img-avatar">
                     <span class="badge badge-primary badge-pill">1</span>
                 </a>

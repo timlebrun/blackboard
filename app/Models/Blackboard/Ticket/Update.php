@@ -34,7 +34,7 @@ class Update extends Model
 
     public function getHtmlAttribute()
     {
-        return (new \ParsedownExtra())->text($this->content);
+        return (new \ParsedownExtra())->setBreaksEnabled(true)->text($this->content);
     }
     
 }

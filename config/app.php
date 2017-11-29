@@ -163,12 +163,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \Laravel\Scout\ScoutServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
-        \Creativeorange\Gravatar\GravatarServiceProvider::class,
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
+        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         /*
          * Application Service Providers...

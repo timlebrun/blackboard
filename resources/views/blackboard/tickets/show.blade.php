@@ -33,7 +33,7 @@
         <h1>
             {{ $ticket->title }}
             <small>
-                <span class="badge badge-{{ $ticket->status->class }}">{{ $ticket->status->name }}</span>
+                <span class="badge badge-status badge-{{ $ticket->status->class }}">{{ $ticket->status->name }}</span>
             </small>
         </h1>
         @if($ticket->is_updatable())

@@ -22,10 +22,18 @@
 
         <img src="" alt="" style="height: 150px; width: 150px; background: #000; display: block;" class="project-thumbnail">
         <h1 class="project-title">{{ $project->name }}</h1>
+        <small class="text-muted">
+            {{ $project->description }}
+        </small>
 
-        <a href="{{ route('projects.tickets.create', $project->id) }}" class="text-primary">Nouveau Ticket</a>
+        <ul class="list-inline list-social">
+            <li><a href="#"><i class="fa fa-github"></i></a></li>
+        </ul>
+
+        <a href="{{ route('projects.tickets.create', $project->id) }}" class="text-primary btn btn-link btn-block">Nouveau Ticket</a>
     </div>
 
+    @if ($tickets->count())
 
         @foreach($tickets as $ticket)
 
@@ -36,12 +44,17 @@
                         <p class="text-muted">{{ $ticket->updates()->first()->content }}</p>
                     </div>
                     <div>
-                        <span class="badge {{ is_null($ticket->status->class) ? '' : 'badge-'.$ticket->status->class }}">{{ $ticket->status->name }}</span>
+                        <span class="badge badge-status {{ is_null($ticket->status->class) ? '' : 'badge-'.$ticket->status->class }}">{{ $ticket->status->name }}</span>
                     </div>
                 </div>
             </div>
 
         @endforeach
 
+    @else
+
+        <p>There is no tickets here yet. Wanna create one ?</p>
+
+    @endif
 
 @endsection

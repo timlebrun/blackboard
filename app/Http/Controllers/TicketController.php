@@ -13,6 +13,7 @@ use App\Models\Blackboard\Project;
 use App\Models\Blackboard\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class TicketController extends Controller
 {
@@ -24,7 +25,7 @@ class TicketController extends Controller
     public function index($project)
     {
         $project = Project::findOrFail($project);
-        $tickets = Ticket::where('project_id', $project->id)->paginate(3);
+        $tickets = Ticket::search(Input::get('q'))->where('project_id', $project->id)->paginate(3);
 
         return view('blackboard.tickets.index')
             ->with('project', $project)

@@ -38,7 +38,7 @@ class CreateBlackboardTables extends Migration
         Schema::create('project_users', function (Blueprint $table) {
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('user_role_id');
+            $table->unsignedInteger('user_role_id')->default('1');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
@@ -52,12 +52,15 @@ class CreateBlackboardTables extends Migration
             $table->string('name');
             $table->integer('level', false, true)->default(0);
             $table->string('color')->nullable();
+            $table->string('class')->nullable();
         });
 
         Schema::create('ticket_statuses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
+            $table->primary('id');
             $table->string('name');
             $table->string('color')->nullable();
+            $table->string('class')->nullable();
         });
 
         Schema::create('tickets', function (Blueprint $table) {
@@ -76,7 +79,7 @@ class CreateBlackboardTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('ticket_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('status_id');
+            $table->integer('status_id');
             $table->text('content');
             $table->timestamps();
 

@@ -31,6 +31,9 @@ class ProjectController extends Controller
     public function show($project)
     {
         $project = Project::findOrFail($project);
+
+        $this->checkReadPermission($project);
+
         $tickets = $project->tickets()->orderByDesc('priority_id')->get();
 
         return view('blackboard.projects.show')
@@ -46,15 +49,30 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'description' => 'string|nullable',
+            'production_url' => 'url|nullable',
+            'development_url' => 'url|nullable',
+            'github_url' => 'url|nullable',
+            'twitter_url' => 'url|nullable',
+            'facebook_url' => 'url|nullable',
+            'thumbnail_url' => 'url|nullable'
         ]);
 
-        dd($validated);
-
         $project = new Project($validated);
-        $project->save();
+
+
+        Auth::user()->projects()->withPivot('user_role_id', '1')->save($project);
 
         return redirect()->route('projects.show', [$project->id]);
+    }
+
+    public function checkReadPermission($project)
+    {
+        $role = $project->role();
+
+        if (!$role)
+            abort(403);
     }
 
 }

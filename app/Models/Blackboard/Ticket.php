@@ -12,9 +12,12 @@ namespace App\Models\Blackboard;
 use App\Models\Blackboard\Ticket\Status;
 use App\Models\Blackboard\Ticket\Update;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Ticket extends Model
 {
+
+    use Searchable;
 
     public function updates()
     {

@@ -13,8 +13,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Project extends Model
-{
+class Project extends Model {
+
+    protected $guarded = ['id'];
     
     public function tickets()
     {
@@ -29,6 +30,7 @@ class Project extends Model
     public function role()
     {
         $user = Auth::user()->id;
+
         return $this->belongsToMany(Role::class, 'project_users', 'project_id', 'user_role_id')->withPivot('user_id')->wherePivot('user_id', $user)->first();
     }
 }
